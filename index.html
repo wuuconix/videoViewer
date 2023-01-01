@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <title>Video Viewer - Wuuconix</title>
+  </head>
+  <body>
+    <video controls name="media">
+      <source src="https://url.wuuconix.link/exampleVideo" type="video/mp4">
+    </video>
+  </body>
+</html>
+
+<script>
+let hash = new URL(location.href).hash.slice(1)
+hash && play(hash)
+window.addEventListener("hashchange", () => {
+  hash = new URL(location.href).hash.slice(1)
+  hash && play(hash)
+})
+function play(url) {
+  const source = document.querySelector("source")
+  const title = document.querySelector("title")
+  const video = document.querySelector("video")
+  source.src = hash
+  title.innerText = hash
+  video.load()
+}
+</script>
+
+<style>
+body {
+  background-color: black;
+}
+video {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  max-height: 100%; max-width: 100%;
+  margin: auto;
+}
+</style>
